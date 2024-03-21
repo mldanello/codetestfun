@@ -27,6 +27,18 @@ while (true)
         }
         
     }
+    if (response == '2')
+    {
+        Console.WriteLine($"\nEnter a string to parse: ");
+        var workString = Console.ReadLine();
+
+        if (workString.Length > 0 )
+        {
+            Console.Write($"\n first non repeated character is:  {getFirstSolo(workString)} \n");
+        }
+
+    }
+
     Console.WriteLine($"\n\n");
 }
 
@@ -47,14 +59,25 @@ static string getFibonacciSequence(int digits)
     for (int i = 2; i < digits; i++)
     {
         var newVal = retVals[i - 1] + retVals[i - 2];
-
         retVals.Add(newVal);
     }
 
     return string.Join(", ", retVals.ToArray());
 }
 
-static void getFirstSolo()
+static string getFirstSolo(string workstring)
 {
+    char testChar = ' ';
+    for (int i = 0; i < workstring.Length; i++) 
+    { 
+        testChar = workstring[i];
+        var resultStr = workstring.Split(testChar);
+        if (resultStr.Length == 2 
+             && resultStr[0].Length > 0 )
+        {
+            break;
+        }
+    }
 
+    return testChar.ToString();
 }
